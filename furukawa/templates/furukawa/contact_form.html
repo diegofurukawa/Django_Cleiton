@@ -1,0 +1,29 @@
+{% extends "default.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} 
+    {% if contact.pk %}
+        Editar Contato
+    {% else %}
+        Novo Contato
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if contact.pk %}
+        <h1> Editar Contato </h1>
+    {% else %}
+        <h1> Novo Contato </h1>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+    
+        <button type="submit" class="btn btn-success"> <strong> Salvar </strong> </button>
+        <a href="{% url 'contact_list' %}" class="btn btn-danger">Cancelar</a>
+    </form>
+
+    
+{% endblock content %}

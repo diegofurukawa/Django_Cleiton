@@ -1,0 +1,43 @@
+{% extends "default.html" %}
+
+{% block page_title %}Lista de Contatos{% endblock page_title %}
+
+{% block content %}
+  <h1> Lista de Contatos </h1>
+  {% if contact_list %}     
+    <div class="table-responsive-sm">       
+      <table class="table table-striped-columns table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Nome Contato</th>              
+              <th scope="col">Telefone</th>              
+              <th scope="col">Email</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody  class="table-group-divider">
+            {% for contact in contact_list %}
+              <tr>
+                  <th scope="row"> {{ contact.pk }} </th>
+                  <td> {{ contact.idCustomer }} </td> 
+                  <td> {{ contact.cName }} </td>
+                  <td> {{ contact.cPhone }} </td>                  
+                  <td> {{ contact.cEmail }} </td>
+                  <td>                
+                      <a href="{% url 'contact_update' pk=contact.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                      <a href="{% url 'contact_delete' pk=contact.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                  </td>                    
+              </tr>
+              {% endfor %}                    
+          </tbody>
+      </table>
+    </div>
+  {% else %}
+    <ul> Não há contatos Cadastrados. </ul>
+  {% endif %}
+
+  <a href="{% url 'contact_create' %}" class="btn btn-success btn-sm">Novo Contato</a>
+  <a href="{% url 'customer_list' %}" class="btn btn-primary btn-sm">Clientes</a>
+{% endblock content %}

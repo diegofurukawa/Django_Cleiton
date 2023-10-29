@@ -1,0 +1,44 @@
+{% extends "default.html" %}
+
+{% block page_title %}Lista de Impostos{% endblock page_title %}
+
+{% block content %}
+  <h1> Lista de Impostos </h1>
+  {% if tax_list %}     
+    <div class="table-responsive-sm">       
+      <table class="table table-striped-columns table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Sigla</th>              
+              <th scope="col">Tipo</th>              
+              <th scope="col">Valor</th>
+              <th scope="col">Valor Aplicado</th>
+            </tr>
+          </thead>
+          <tbody  class="table-group-divider">
+            {% for tax in tax_list %}
+              <tr>
+                  <th scope="row"> {{ tax.pk }} </th>
+                  <td> {{ tax.cTaxDescription }} </td> 
+                  <td> {{ tax.cAcronym }} </td>
+                  <td> {{ tax.xType }} </td>                  
+                  <td> {{ tax.nValue }} </td>
+                  <td> {{ tax.nValueCalculated }} </td>
+                  <td>                
+                      <a href="{% url 'tax_update' pk=tax.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                      <a href="{% url 'tax_delete' pk=tax.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                  </td>                    
+              </tr>
+              {% endfor %}                    
+          </tbody>
+      </table>
+    </div>
+  {% else %}
+    <ul> Não há Impostos Cadastrados. </ul>
+  {% endif %}
+
+  <a href="{% url 'tax_create' %}" class="btn btn-success btn-sm">Novo Produto</a>
+  <a href="{% url 'tax_list' %}" class="btn btn-primary btn-sm">Impostos</a>
+{% endblock content %}

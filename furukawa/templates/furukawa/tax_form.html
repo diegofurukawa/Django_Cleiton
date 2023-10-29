@@ -1,0 +1,29 @@
+{% extends "default.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} 
+    {% if tax.pk %}
+        Editar Imposto
+    {% else %}
+        Novo Imposto
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if tax.pk %}
+        <h1> Editar Imposto </h1>
+    {% else %}
+        <h1> Novo Imposto </h1>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+    
+        <button type="submit" class="btn btn-success"> <strong> Salvar </strong> </button>
+        <a href="{% url 'tax_list' %}" class="btn btn-danger">Cancelar</a>
+    </form>
+
+    
+{% endblock content %}

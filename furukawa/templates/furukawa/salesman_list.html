@@ -1,0 +1,40 @@
+{% extends "default.html" %}
+
+{% block page_title %}Lista de Vendedores{% endblock page_title %}
+
+{% block content %}
+  <h1> Lista de Vendedores </h1>
+  {% if salesman_list %}     
+    <div class="table-responsive-sm">       
+      <table class="table table-striped-columns table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Vendedor</th>
+              <th scope="col">Telefone</th>              
+              <th scope="col">E-mail</th>              
+            </tr>
+          </thead>
+          <tbody  class="table-group-divider">
+            {% for salesman in salesman_list %}
+              <tr>
+                  <th scope="row"> {{ salesman.pk }} </th>
+                  <td> {{ salesman.cName }} </td> 
+                  <td> {{ salesman.cPhone }} </td>
+                  <td> {{ salesman.cEmail }} </td>                  
+                  <td>                
+                      <a href="{% url 'salesman_update' pk=salesman.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                      <a href="{% url 'salesman_delete' pk=salesman.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                  </td>                    
+              </tr>
+              {% endfor %}                    
+          </tbody>
+      </table>
+    </div>
+  {% else %}
+    <ul> Não há Vendedores Cadastrados. </ul>
+  {% endif %}
+
+  <a href="{% url 'salesman_create' %}" class="btn btn-success btn-sm">Novo Produto</a>
+  <a href="{% url 'salesman_list' %}" class="btn btn-primary btn-sm">Vendedores</a>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "default.html" %}
+
+{% block page_title %}Lista de Produtos{% endblock page_title %}
+
+{% block content %}
+  <h1> Lista de Produtos </h1>
+  {% if product_list %}     
+    <div class="table-responsive-sm">       
+      <table class="table table-striped-columns table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Material</th>
+              <th scope="col">Descrição</th>              
+              <th scope="col">Tipo</th>              
+              <th scope="col">xU</th>
+              <th scope="col">g/m2</th>
+              <th scope="col">gm</th>
+              <th scope="col">Densidade</th>
+              <th scope="col">Valor Unit</th>
+            </tr>
+          </thead>
+          <tbody  class="table-group-divider">
+            {% for product in product_list %}
+              <tr>
+                  <th scope="row"> {{ product.pk }} </th>
+                  <td> {{ product.cProductName }} </td> 
+                  <td> {{ product.cDescription }} </td>
+                  <td> {{ product.xType }} </td>                  
+                  <td> {{ product.xU }} </td>
+                  <td> {{ product.xAreaCapacity }} </td>
+                  <td> {{ product.xCapacity }} </td>
+                  <td> {{ product.xDensity }} </td>
+                  <td> {{ product.nValue }} </td>
+                  <td>                
+                      <a href="{% url 'product_update' pk=product.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                      <a href="{% url 'product_delete' pk=product.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                  </td>                    
+              </tr>
+              {% endfor %}                    
+          </tbody>
+      </table>
+    </div>
+  {% else %}
+    <ul> Não há Produtos Cadastrados. </ul>
+  {% endif %}
+
+  <a href="{% url 'product_create' %}" class="btn btn-success btn-sm">Novo Produto</a>
+  <a href="{% url 'product_list' %}" class="btn btn-primary btn-sm">Produtos</a>
+{% endblock content %}

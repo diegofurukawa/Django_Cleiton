@@ -1,0 +1,20 @@
+{% extends "default.html" %}
+
+{% block page_title %}
+    Excluir Produto
+{% endblock page_title %}
+
+{% block content %}
+    <h1>
+        Excluir Produto?
+    </h1>
+
+    <p> Tem certeza que deseja excluir o Produto <strong> {{ product.cProductName }} </strong> ?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+        <a href="{% url 'product_list' %}" class="btn btn-primary btn-sm">Cancelar</a>
+    </form>
+{% endblock content %}
