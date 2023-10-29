@@ -10,6 +10,7 @@
 {% endblock page_title %}
 
 {% block content %}
+<div class="container">
     {% if salesman.pk %}
         <h1> Editar Vendedores </h1>
     {% else %}
@@ -24,6 +25,5 @@
         <button type="submit" class="btn btn-success"> <strong> Salvar </strong> </button>
         <a href="{% url 'salesman_list' %}" class="btn btn-danger">Cancelar</a>
     </form>
-
-    
+</div> 
 {% endblock content %}

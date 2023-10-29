@@ -3,9 +3,9 @@
 {% block page_title %}Lista de Contatos{% endblock page_title %}
 
 {% block content %}
+<div class="container">
   <h1> Lista de Contatos </h1>
-  {% if contact_list %}     
-    <div class="table-responsive-sm">       
+  {% if contact_list %}                
       <table class="table table-striped-columns table-hover">
           <thead>
             <tr>
@@ -32,12 +32,12 @@
               </tr>
               {% endfor %}                    
           </tbody>
-      </table>
-    </div>
-  {% else %}
-    <ul> Não há contatos Cadastrados. </ul>
-  {% endif %}
+      </table>    
+      {% else %}
+        <ul> Não há contatos Cadastrados. </ul>
+      {% endif %}
 
-  <a href="{% url 'contact_create' %}" class="btn btn-success btn-sm">Novo Contato</a>
-  <a href="{% url 'customer_list' %}" class="btn btn-primary btn-sm">Clientes</a>
+      <a href="{% url 'contact_create' %}" class="btn btn-success btn-sm">Novo Contato</a>
+      <a href="{% url 'customer_list' %}" class="btn btn-primary btn-sm">Clientes</a>
+</div>
 {% endblock content %}

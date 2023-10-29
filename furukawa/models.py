@@ -161,3 +161,37 @@ class Contract(models.Model):
     idCustomer = models.ForeignKey("Customer", on_delete=models.PROTECT)
     idSalesMan = models.ForeignKey("SalesMan", on_delete=models.PROTECT)
     lActive = models.IntegerField(auto_created=True, default=1)
+
+
+# ========= Endereço | Address
+class Address(models.Model):
+    idAddress = models.IntegerField(primary_key=True)
+
+    cAddress = models.CharField(
+        max_length=100, null=False, blank=False, verbose_name="Endereço"
+    )
+    idCity = models.IntegerField(null=True)
+
+    cCityName = models.CharField(
+        max_length=100, null=False, blank=False, verbose_name="Cidade"
+    )
+    idState = models.IntegerField(null=True)
+    cStateName = models.CharField(
+        max_length=100, null=False, blank=False, verbose_name="Estado"
+    )
+    cZipCode = models.CharField(
+        max_length=20, null=False, blank=False, verbose_name="CEP"
+    )
+
+    idCustomer = models.ForeignKey(
+        "Customer", on_delete=models.PROTECT, verbose_name="Cliente"
+    )
+
+    dCreated = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+
+    dLastUpdate = models.DateTimeField(null=True)
+
+    lActive = models.IntegerField(auto_created=True, default=1)
+
+    def __str__(self):
+        return "{} ({})".format(self.idAddress, self.cName)

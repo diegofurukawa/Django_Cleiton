@@ -5,16 +5,18 @@
 {% endblock page_title %}
 
 {% block content %}
-    <h1>
-        Excluir Contato?
-    </h1>
+    <div class="container">
+        <h1>
+            Excluir Contato?
+        </h1>
 
-    <p> Tem certeza que deseja excluir o Contato <strong> {{ contact.cName}} </strong> ?</p>
+        <p> Tem certeza que deseja excluir o Contato <strong> {{ contact.cName }} </strong> ?</p>
 
-    <form method="POST">
-        {% csrf_token %}
-        
-        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-        <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Cancelar</a>
-    </form>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+            <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Cancelar</a>
+        </form>
+    </div>
 {% endblock content %}

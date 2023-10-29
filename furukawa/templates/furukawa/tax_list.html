@@ -3,9 +3,9 @@
 {% block page_title %}Lista de Impostos{% endblock page_title %}
 
 {% block content %}
+<div class="container">  
   <h1> Lista de Impostos </h1>
-  {% if tax_list %}     
-    <div class="table-responsive-sm">       
+  {% if tax_list %}              
       <table class="table table-striped-columns table-hover">
           <thead>
             <tr>
@@ -15,6 +15,7 @@
               <th scope="col">Tipo</th>              
               <th scope="col">Valor</th>
               <th scope="col">Valor Aplicado</th>
+              <th scope="col">Ações</th> 
             </tr>
           </thead>
           <tbody  class="table-group-divider">
@@ -33,12 +34,12 @@
               </tr>
               {% endfor %}                    
           </tbody>
-      </table>
-    </div>
-  {% else %}
-    <ul> Não há Impostos Cadastrados. </ul>
-  {% endif %}
+      </table>    
+      {% else %}
+        <ul> Não há Impostos Cadastrados. </ul>
+      {% endif %}
 
-  <a href="{% url 'tax_create' %}" class="btn btn-success btn-sm">Novo Produto</a>
-  <a href="{% url 'tax_list' %}" class="btn btn-primary btn-sm">Impostos</a>
+      <a href="{% url 'tax_create' %}" class="btn btn-success btn-sm">Novo Produto</a>
+      <a href="{% url 'tax_list' %}" class="btn btn-primary btn-sm">Impostos</a>
+</div>
 {% endblock content %}

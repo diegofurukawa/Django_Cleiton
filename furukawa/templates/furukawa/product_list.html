@@ -3,9 +3,10 @@
 {% block page_title %}Lista de Produtos{% endblock page_title %}
 
 {% block content %}
+<div class="container">
   <h1> Lista de Produtos </h1>
   {% if product_list %}     
-    <div class="table-responsive-sm">       
+           
       <table class="table table-striped-columns table-hover">
           <thead>
             <tr>
@@ -18,6 +19,7 @@
               <th scope="col">gm</th>
               <th scope="col">Densidade</th>
               <th scope="col">Valor Unit</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody  class="table-group-divider">
@@ -40,11 +42,15 @@
               {% endfor %}                    
           </tbody>
       </table>
+      
+    
+      {% else %}
+        <ul> Não há Produtos Cadastrados. </ul>
+      {% endif %}
+      <a href="{% url 'product_create' %}" class="btn btn-success btn-sm">Novo Produto</a>  
     </div>
-  {% else %}
-    <ul> Não há Produtos Cadastrados. </ul>
-  {% endif %}
-
-  <a href="{% url 'product_create' %}" class="btn btn-success btn-sm">Novo Produto</a>
+  
+  <!--
   <a href="{% url 'product_list' %}" class="btn btn-primary btn-sm">Produtos</a>
+  -->
 {% endblock content %}

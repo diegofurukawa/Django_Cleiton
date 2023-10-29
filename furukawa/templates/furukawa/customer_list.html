@@ -3,9 +3,12 @@
 {% block page_title %}Lista de Clientes{% endblock page_title %}
 
 {% block content %}
-  <h1> Lista de Clientes </h1>
-  {% if customer_list %}     
-    <div class="table-responsive-sm">       
+<div class="table-responsive-xxl">
+  <h1> Lista de Clientes 
+    <a href="{% url 'customer_create' %}" class="btn btn-success btn-sm">Novo Cliente</a>
+    <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Contatos</a>
+  </h1>
+  {% if customer_list %}                
       <table class="table table-striped-columns table-hover">
           <thead>
             <tr>
@@ -52,17 +55,20 @@
                                    
                       <a href="{% url 'customer_update' pk=customer.pk %}" class="btn btn-secondary btn-sm">Editar</a>
                       <a href="{% url 'customer_delete' pk=customer.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                      <!--
                       <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Contatos</a>
-                      
+                      -->
                   </td>                    
               </tr>
               {% endfor %}                    
           </tbody>
       </table>
-    </div>
+    
   {% else %}
     <ul> Não há Clientes Cadastrados. </ul>
   {% endif %}
 
   <a href="{% url 'customer_create' %}" class="btn btn-success btn-sm">Novo Cliente</a>
+  <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Contatos</a>
+</div>
 {% endblock content %}
