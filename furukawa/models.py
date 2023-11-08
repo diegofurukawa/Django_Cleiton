@@ -25,7 +25,9 @@ class SalesMan(models.Model):
 class Customer(models.Model):
     idCustomer = models.IntegerField(primary_key=True, verbose_name="idCliente")
 
-    xCustomerDocument = models.CharField(max_length=21, verbose_name="CNPJ")
+    xCustomerDocument = models.CharField(
+        max_length=15, null=True, blank=True, unique=True, verbose_name="CNPJ"
+    )
 
     cCustomerName = models.CharField(
         max_length=100, null=False, blank=False, verbose_name="Razão Social"

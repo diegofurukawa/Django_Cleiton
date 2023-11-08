@@ -1,12 +1,26 @@
 {% extends "default.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
 {% block page_title %}Lista de Clientes{% endblock page_title %}
 
+{% block destaque %}
+  <img src="{% static 'img/painel.jpg' %}"
+  class="img-fluid" 
+  alt="Image"  
+  style="height: 3vw; width: auto; min-width: 140px;"
+  >
+{% endblock destaque %}
+
 {% block content %}
-<div class="table-responsive-xxl">
+<div class="container">
   <h1> Lista de Clientes 
-    <a href="{% url 'customer_create' %}" class="btn btn-success btn-sm">Novo Cliente</a>
-    <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Contatos</a>
+  <a href="{% url 'customer_create' %}" class="btn btn-success"
+    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+    Novo Cliente
+  </a>
+  <a href="{% url 'contact_list' %}" class="btn btn-primary btn-sm">Contatos</a>
   </h1>
   {% if customer_list %}                
       <table class="table table-striped-columns table-hover">
@@ -14,9 +28,10 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">CNPJ</th>
-              <th scope="col">Razao Social</th>              
               <th scope="col">Nome Fantasia</th>
-                          
+                                          
+              <!--           
+              <th scope="col">Razao Social</th>
               <th scope="col">Telefone</th>
               <th scope="col">E-mail</th>
               <th scope="col">Vendedor</th></td>
@@ -26,9 +41,8 @@
               <th scope="col">Cond. Pag.</th>
               <th scope="col">Lista Preço</th>
               <th scope="col">Observação</th>
+                            
               
-              
-              <!--
               <th scope="col">Criado em</th>
               --> 
               <th scope="col">Ações</th>
@@ -38,9 +52,10 @@
             {% for customer in customer_list %}
               <tr>
                   <th scope="row"> {{ customer.pk }} </th>
-                  <td> {{ customer.xCustomerDocument }} </td>
-                  <td> {{ customer.cCustomerName }} </td>                  
+                  <td> {{ customer.xCustomerDocument }} </td>                                   
                   <td> {{ customer.cCustomerShortName }} </td>
+                  <!--
+                  <td> {{ customer.cCustomerName }} </td>
                   <td> {{ customer.cPhone }} </td>
                   <td> {{ customer.cEmail }} </td>
                   <td> {{ customer.idSalesMan }} </td>
@@ -50,7 +65,7 @@
                   <td> {{ customer.xPaymentCondition }} </td>
                   <td> {{ customer.xListPrice }} </td>
                   <td> {{ customer.cObservation }} </td>
-                  
+                  -->
                   <td>    
                                    
                       <a href="{% url 'customer_update' pk=customer.pk %}" class="btn btn-secondary btn-sm">Editar</a>

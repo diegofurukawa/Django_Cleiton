@@ -1,57 +1,35 @@
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
-);
+body{
+  background-color: rgba(148, 45, 45, 0.728);    
+  font-size: xx-large;
+}
+btn-primary{
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .45rem;
+}
 
-$table-cell-padding-y:        .5rem;
-$table-cell-padding-x:        .5rem;
-$table-cell-padding-y-sm:     .25rem;
-$table-cell-padding-x-sm:     .25rem;
+btn-success{
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .75rem;
+}
 
-$table-cell-vertical-align:   top;
+button{
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .75rem;
+}
 
-$table-color:                 var(--#{$prefix}emphasis-color);
-$table-bg:                    var(--#{$prefix}body-bg);
-$table-accent-bg:             transparent;
-
-$table-th-font-weight:        null;
-
-$table-striped-color:         $table-color;
-$table-striped-bg-factor:     .05;
-$table-striped-bg:            rgba(var(--#{$prefix}emphasis-color-rgb), $table-striped-bg-factor);
-
-$table-active-color:          $table-color;
-$table-active-bg-factor:      .1;
-$table-active-bg:             rgba(var(--#{$prefix}emphasis-color-rgb), $table-active-bg-factor);
-
-$table-hover-color:           $table-color;
-$table-hover-bg-factor:       .075;
-$table-hover-bg:              rgba(var(--#{$prefix}emphasis-color-rgb), $table-hover-bg-factor);
-
-$table-border-factor:         .2;
-$table-border-width:          var(--#{$prefix}border-width);
-$table-border-color:          var(--#{$prefix}border-color);
-
-$table-striped-order:         odd;
-$table-striped-columns-order: even;
-
-$table-group-separator-color: currentcolor;
-
-$table-caption-color:         var(--#{$prefix}secondary-color);
-
-$table-bg-scale:              -80%;
-
-
-$table-variants: (
-  "primary":    shift-color($primary, $table-bg-scale),
-  "secondary":  shift-color($secondary, $table-bg-scale),
-  "success":    shift-color($success, $table-bg-scale),
-  "info":       shift-color($info, $table-bg-scale),
-  "warning":    shift-color($warning, $table-bg-scale),
-  "danger":     shift-color($danger, $table-bg-scale),
-  "light":      $light,
-  "dark":       $dark,
-);
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+  --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+}
